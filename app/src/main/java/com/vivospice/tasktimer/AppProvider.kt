@@ -80,7 +80,8 @@ class AppProvider : ContentProvider(){
             TASKS_ID -> {
                 queryBuilder.tables = TasksContract.TABLE_NAME
                 val taskId = TasksContract.getId(uri)
-                queryBuilder.appendWhereEscapeString("${TasksContract.Columns.ID} = $taskId")       // <-- change method
+                queryBuilder.appendWhere("${TasksContract.Columns.ID} = ")
+                queryBuilder.appendWhereEscapeString("$taskId")       // <-- change method
             }
 
 /*            TIMINGS -> queryBuilder.tables = TimingsContract.TABLE_NAME
@@ -88,7 +89,8 @@ class AppProvider : ContentProvider(){
             TIMINGS_ID -> {
                 queryBuilder.tables = TimingsContract.TABLE_NAME
                 val timingId = TimingsContract.getId(uri)
-                queryBuilder.appendWhereEscapeString("${TimingsContract.Columns.ID} = $timingId")   // <-- and here
+                queryBuilder.appendWhere("${TimingsContract.Columns.ID} = ")
+                queryBuilder.appendWhereEscapeString("$timingId")   // <-- and here
             }
 
             TASK_DURATIONS -> queryBuilder.tables = DurationsContract.TABLE_NAME
@@ -96,7 +98,8 @@ class AppProvider : ContentProvider(){
             TASK_DURATIONS_ID -> {
                 queryBuilder.tables = DurationsContract.TABLE_NAME
                 val durationId = DurationsContract.getId(uri)
-                queryBuilder.appendWhereEscapeString("${DurationsContract.Columns.ID} = $durationId")   // <-- and here
+                queryBuilder.appendWhere("${DurationsContract.Columns.ID} = ")
+                queryBuilder.appendWhereEscapeString("$durationId")   // <-- and here
             }*/
 
             else -> throw IllegalArgumentException("Unknown URI: $uri")
